@@ -1,0 +1,208 @@
+{
+  "Nav": {
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "bookCta": "Book your session"
+  },
+  "Footer": {
+    "tagline": "Coaching with {name}.",
+    "explore": "Explore",
+    "getInTouch": "Get in touch",
+    "rights": "© {year} {brand}. All rights reserved."
+  },
+  "Home": {
+    "eyebrow": "Career Restart Coaching",
+    "headlineBefore": "Restart your career with",
+    "headlineFirstAccent": "clarity",
+    "headlineMiddle": "and",
+    "headlineSecondAccent": "confidence",
+    "subhead": "Empowering people — especially moms — to return to the workforce with renewed purpose, practical strategy, and unshakeable confidence.",
+    "primaryCta": "Book your session",
+    "secondaryCta": "See services",
+    "heroImageAlt": "Career Restart Coaching",
+    "aboutEyebrow": "About",
+    "aboutHeading": "I've walked this road myself.",
+    "aboutReadMore": "Read more about me →",
+    "testimonialsEyebrow": "Testimonials",
+    "testimonialsHeading": "What clients say.",
+    "servicesEyebrow": "Services",
+    "servicesHeading": "Ways to work together.",
+    "servicesViewAll": "View all →",
+    "ctaEyebrow": "Your next chapter",
+    "ctaHeading": "You're not starting from scratch — you're starting from experience.",
+    "ctaFollow": "Let's build your next chapter together.",
+    "ctaButton": "Book your session"
+  },
+  "About": {
+    "metaTitle": "About",
+    "metaDescription": "About {name}, {role}.",
+    "eyebrow": "About",
+    "pillarsEyebrow": "What guides my work",
+    "pillarsHeading": "Vision, mission, and message.",
+    "closingEyebrow": "Your next chapter",
+    "closingCta": "Book your session"
+  },
+  "Services": {
+    "metaTitle": "Services",
+    "metaDescription": "Career restart coaching services — clarity sessions, workshops, interview prep, and CV review.",
+    "eyebrow": "Services",
+    "heading": "Find the right starting point for your restart.",
+    "subhead": "Four ways to work together — pick the one that matches where you are right now. Not sure? Reach out and we'll find the right fit.",
+    "card": {
+      "learnMore": "Learn more →"
+    }
+  },
+  "ServiceDetail": {
+    "backLink": "← All services",
+    "eyebrow": "Service",
+    "outcomesHeading": "What you'll leave with",
+    "forWhomHeading": "Who this is for",
+    "asideEyebrow": "Details",
+    "duration": "Duration",
+    "capacity": "Capacity",
+    "delivery": "Delivery",
+    "price": "Price",
+    "capacityValue": "Up to {n}",
+    "deliveryValue": "{from}–{to} working days",
+    "bookCta": "Book your session",
+    "bookingNote": "Online booking is coming soon."
+  },
+  "Contact": {
+    "metaTitle": "Contact",
+    "metaDescription": "Get in touch to book a session or ask a question.",
+    "eyebrow": "Contact",
+    "heading": "Let's talk.",
+    "intro": "Tell me a little about what's going on and which session sounds right. I read every message and respond within two business days.",
+    "orEmail": "Or email directly",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "What's on your mind?",
+      "submit": "Send message",
+      "sending": "Sending…",
+      "successHeading": "Message received.",
+      "successBody": "Thanks — I'll be in touch within two business days.",
+      "errors": {
+        "name": "Please enter your name.",
+        "email": "Please enter a valid email address.",
+        "message": "Please write a message (10–4000 characters)."
+      }
+    }
+  },
+  "Author": {
+    "name": "Ibukun Aliu",
+    "title": "Career Restart Coach",
+    "shortBio": "I help people — especially moms — return to the workforce with renewed purpose, practical strategy, and unshakeable confidence.",
+    "bio": {
+      "p1": "My name is Ibukun Aliu, and I am a Career Restart Coach.",
+      "p2": "With a background in Psychology and Human Resource Management, and a career in Talent Acquisition, I've spent years understanding people, potential, and the power of the right opportunity.",
+      "p3": "My passion for career restarts is deeply personal. I've walked this road myself. I know what it feels like to step back into the workforce after a break — the uncertainty, the self-doubt, the desire for clarity, and the hope for a fresh start. With the right support, that journey can become transformative.",
+      "p4": "One group especially close to my heart is women — particularly moms — who are ready to restart or pivot their careers. I understand the courage it takes to return, and I'm committed to making that transition easier, clearer, and more empowering."
+    },
+    "pillars": {
+      "vision": {
+        "label": "Vision",
+        "title": "Be a mindset shifter.",
+        "body": "Helping women shed fear and doubt, embrace their true selves, and confidently restart their careers."
+      },
+      "mission": {
+        "label": "Mission",
+        "title": "Build a community that lifts you back up.",
+        "body": "Mentoring women through their return-to-work journey, building a supportive community, and sharing my story through writing and thought leadership."
+      },
+      "message": {
+        "label": "Message",
+        "title": "I restarted my career, and so can you.",
+        "body": "With new skills, confidence, and resilience, you can build the future you desire. If you're willing to learn, grow, and step forward with courage, your restart is absolutely possible."
+      }
+    },
+    "portraitAlt": "Portrait of {name}",
+    "ctaQuote": "You're not starting from scratch — you're starting from experience.",
+    "ctaFollow": "Let's build your next chapter together."
+  },
+  "Testimonials": {
+    "miriam": {
+      "name": "Miriam",
+      "context": "Interview preparation",
+      "body": "I recently worked with Ibukun Aliu for interview preparation, and the experience was truly invaluable. Our full interview simulation felt realistic and highlighted exactly where I needed to improve. Her Talent Acquisition expertise came through in the clear, actionable feedback she provided, helping me refine both my delivery and confidence. I felt significantly more prepared thanks to her guidance. I highly recommend her to anyone looking to elevate their career."
+    },
+    "hannah": {
+      "name": "Hannah",
+      "context": "Offer negotiation",
+      "body": "I sought out Ibukun because I needed clarity on how to make a meaningful negotiation and decision between two offers. Ibukun listened carefully and responded with calm confidence. One statement stayed with me: “We don’t have because we do not ask.” She encouraged me to be clear and direct about what I wanted, to communicate transparently that I was considering another opportunity, and to articulate why I was genuinely interested in working with this employer. I followed her advice and wrote to the employer, clearly outlining my expectations. To my surprise and gratitude, every point I raised was addressed positively. The outcome exceeded my expectations."
+    },
+    "patricia": {
+      "name": "Patricia",
+      "context": "Restarting after a move to Germany",
+      "body": "After moving to Germany, I struggled to restart my career while still learning the language. Despite ten years of experience, I felt like a junior again. Working with Ibukun changed everything. She reviewed my CV, prepared me with a German mock interview, and helped me recognise the value of my expertise beyond language barriers. Even after I secured a job, she continued to check in and support my progress. I highly recommend her to anyone restarting their career."
+    }
+  },
+  "ServicesData": {
+    "clarity-session": {
+      "title": "Clarity Session",
+      "shortBlurb": "A focused, one-to-one session designed to help you gain direction, understand your next steps, and move forward with confidence.",
+      "description": [
+        "Most career stuckness isn't a lack of options — it's a lack of clarity about which option matches who you actually are right now. We spend the hour cutting through that.",
+        "You bring the situation: a return after a break, a pivot you're weighing, an offer on the table, or a vague sense that you're drifting. We end with a written one-page plan you can act on this week."
+      ],
+      "outcomes": [
+        "A clear read on what's actually driving your dissatisfaction or ambition",
+        "Three concrete next moves, prioritized",
+        "A written summary delivered within 24 hours"
+      ],
+      "forWhom": "Anyone weighing a return, a pivot, or a hard career decision and needing structured thinking — fast."
+    },
+    "restart-framework-workshop": {
+      "title": "Restart Framework Workshop",
+      "shortBlurb": "A practical, supportive workshop that walks you through the essential steps of restarting your career — from mindset to strategy to action.",
+      "description": [
+        "Three hours, twelve people, one shared goal: turning a career restart from a fuzzy intention into a real plan. We work through the Restart Framework I've developed working with returners, and you leave with a draft plan and a small cohort of women doing the same work.",
+        "Format: short teaching segments on mindset, positioning, and action; paired exercises; and live coaching of two volunteer participants."
+      ],
+      "outcomes": [
+        "A drafted restart plan, peer-reviewed",
+        "A repeatable framework for evaluating future moves",
+        "Connections with eleven others on the same journey"
+      ],
+      "forWhom": "Women — especially moms — who are mid-restart and learn best with others in the room."
+    },
+    "interview-prep": {
+      "title": "Interview Prep",
+      "shortBlurb": "A mock interview session with targeted questions and feedback to set you up for success in your next interview.",
+      "description": [
+        "We run a realistic mock interview tailored to the role you're targeting — behavioral, role-specific, or both. I take notes the whole way through, and we close with detailed, actionable feedback drawn from years inside Talent Acquisition.",
+        "You leave knowing exactly where you're strong, where you're losing the room, and how to fix it before your real interview."
+      ],
+      "outcomes": [
+        "A realistic mock interview tailored to your target role",
+        "Specific, actionable feedback on content, structure, and delivery",
+        "A sharpened answer to the questions you tend to fumble"
+      ],
+      "forWhom": "Anyone with an interview on the calendar in the next six weeks."
+    },
+    "cv-review": {
+      "title": "CV Review & Positioning",
+      "shortBlurb": "A professional review of your CV with tailored recommendations, updated wording for key sections, and one round of edits.",
+      "description": [
+        "Your CV gets read in under thirty seconds. I rewrite it to survive that and earn the second read — repositioning your experience around the value you actually create, not just the tasks you've done.",
+        "You send me your current CV and the kind of role you're targeting. I return tailored recommendations, updated wording for your key sections, and one round of edits to incorporate your feedback."
+      ],
+      "outcomes": [
+        "A repositioned CV ready to send",
+        "Notes on what to keep, drop, and rewrite — and why",
+        "One round of revisions after you've reviewed"
+      ],
+      "forWhom": "Returners and pivoters whose CVs need to make the case for a new chapter."
+    }
+  },
+  "LocaleSwitcher": {
+    "label": "Language",
+    "en": "English"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "body": "The page you're looking for doesn't exist.",
+    "home": "Back to home"
+  }
+}

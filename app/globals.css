@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand palette */
+  --color-background: #fdf6e3;       /* cream */
+  --color-surface: #ffffff;          /* contrast cards / sections */
+  --color-foreground: #1c3d2b;       /* forest green — primary text & buttons */
+  --color-muted: #5a6b5b;            /* soft green-grey — sub-text */
+  --color-subtle: #ecdfb8;            /* warm cream-tan — borders */
+  --color-accent: #c9a227;           /* gold */
+  --color-accent-soft: #f5e6b0;      /* pale gold tint */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
+}
+
+@layer base {
+  html {
+    color: var(--color-foreground);
+    background: var(--color-background);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background: var(--color-accent-soft);
+    color: var(--color-foreground);
+  }
+}
+
+@utility container-prose {
+  max-width: 42rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+@utility container-page {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+@utility heading-display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+@utility eyebrow {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
