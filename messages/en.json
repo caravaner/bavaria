@@ -47,8 +47,9 @@
     "metaTitle": "Services",
     "metaDescription": "Career restart coaching services — clarity sessions, workshops, interview prep, and CV review.",
     "eyebrow": "Services",
-    "heading": "Find the right starting point for your restart.",
-    "subhead": "Four ways to work together — pick the one that matches where you are right now. Not sure? Reach out and we'll find the right fit.",
+    "heading": "Find the right starting point for your start.",
+    "subhead": "Four ways to work together — pick the one that matches where you are right now. Not sure? Reach out and we'll find the right fit." ,
+
     "card": {
       "learnMore": "Learn more →"
     }
@@ -90,6 +91,30 @@
       }
     }
   },
+  "CheckoutSuccess": {
+    "metaTitle": "Booking confirmed",
+    "metaDescription": "Your booking is confirmed.",
+    "eyebrow": "Payment confirmed",
+    "heading": "You're booked.",
+    "body": "Your payment was received and a confirmation email is on its way. I'll be in touch within one business day to set up our session — keep an eye on your inbox.",
+    "next": "What to expect next",
+    "nextItems": [
+      "A confirmation email with everything you'll need",
+      "A short questionnaire to help me prepare",
+      "A calendar invite once we've agreed on a time"
+    ],
+    "homeCta": "Back to home",
+    "servicesCta": "Explore other services"
+  },
+  "CheckoutCancel": {
+    "metaTitle": "Payment cancelled",
+    "metaDescription": "Your payment was cancelled and no charge was made.",
+    "eyebrow": "Payment cancelled",
+    "heading": "No worries — nothing was charged.",
+    "body": "Your payment was cancelled and no charge was made to your account. Whenever you're ready, you can pick up where you left off, or reach out if you have questions.",
+    "tryAgain": "Back to services",
+    "contact": "Get in touch"
+  },
   "Author": {
     "name": "Ibukun Aliu",
     "title": "Career Restart Coach",
@@ -104,12 +129,12 @@
       "vision": {
         "label": "Vision",
         "title": "Be a mindset shifter.",
-        "body": "Helping women shed fear and doubt, embrace their true selves, and confidently restart their careers."
+        "body": "Helping people shed fear and doubt, embrace their true selves, and confidently restart their careers."
       },
       "mission": {
         "label": "Mission",
         "title": "Build a community that lifts you back up.",
-        "body": "Mentoring women through their return-to-work journey, building a supportive community, and sharing my story through writing and thought leadership."
+        "body": "Mentoring professionals through their return-to-work journey, building a supportive community, and sharing my story through writing and thought leadership."
       },
       "message": {
         "label": "Message",
@@ -188,12 +213,7 @@
         "Your CV gets read in under thirty seconds. I rewrite it to survive that and earn the second read — repositioning your experience around the value you actually create, not just the tasks you've done.",
         "You send me your current CV and the kind of role you're targeting. I return tailored recommendations, updated wording for your key sections, and one round of edits to incorporate your feedback."
       ],
-      "outcomes": [
-        "A repositioned CV ready to send",
-        "Notes on what to keep, drop, and rewrite — and why",
-        "One round of revisions after you've reviewed"
-      ],
-      "forWhom": "Returners and pivoters whose CVs need to make the case for a new chapter."
+      "forWhom": "Anyone whose CV needs to make the case for a new chapter."
     }
   },
   "LocaleSwitcher": {

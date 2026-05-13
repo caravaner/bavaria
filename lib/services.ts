@@ -14,27 +14,27 @@ export type ServiceShape = {
 export const services: ServiceShape[] = [
   {
     slug: "clarity-session",
-    durationMinutes: 60,
-    priceCents: 15000,
+    durationMinutes: 45,
+    priceCents: 7900,
     currency: "EUR",
   },
   {
     slug: "restart-framework-workshop",
-    durationMinutes: 180,
+    durationMinutes: 120,
     capacity: 12,
-    priceCents: 9500,
+    priceCents: 6900,
     currency: "EUR",
   },
-  {
-    slug: "interview-prep",
-    durationMinutes: 90,
-    priceCents: 22000,
-    currency: "EUR",
-  },
+  // {
+  //   slug: "interview-prep",
+  //   durationMinutes: 90,
+  //   priceCents: 22000,
+  //   currency: "EUR",
+  // },
   {
     slug: "cv-review",
     deliveryDays: [3, 5],
-    priceCents: 17500,
+    priceCents: 9900,
     currency: "EUR",
   },
 ];
