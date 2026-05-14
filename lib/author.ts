@@ -2,6 +2,6 @@
 export const author = {
   /** Brand-displayed name. Same across locales; not translated. */
   name: "Ibukun Aliu",
-  email: "hello@bavaria.example.com",
+  email: " info@restartmycareer.com",
   imageSrc: "/images/author.jpeg",
 };

@@ -74,17 +74,19 @@ export default async function ServiceDetailPage(
               ))}
             </div>
 
-            <div className="mt-16">
-              <p className="eyebrow">{t("outcomesHeading")}</p>
-              <ul className="mt-4 space-y-3">
-                {outcomes.map((o, i) => (
-                  <li key={i} className="flex gap-4 text-lg">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                    <span>{o}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {outcomes.length > 0 && (
+              <div className="mt-16">
+                <p className="eyebrow">{t("outcomesHeading")}</p>
+                <ul className="mt-4 space-y-3">
+                  {outcomes.map((o, i) => (
+                    <li key={i} className="flex gap-4 text-lg">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                      <span>{o}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             <div className="mt-16">
               <p className="eyebrow">{t("forWhomHeading")}</p>
