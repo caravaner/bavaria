@@ -53,7 +53,7 @@ export default async function Home(props: PageProps<"/[locale]">) {
           <div className="lg:col-span-5">
             <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-accent-soft">
               <Image
-                src="/images/hero.svg"
+                src="/images/site.jpg"
                 alt={t("heroImageAlt")}
                 fill
                 priority

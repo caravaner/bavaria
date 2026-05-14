@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6db2e125-e9de-4a70-98cb-abb9a76509dc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/public/images/site.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/author.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/author.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/services.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/services/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/services/[slug]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/messages/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/messages/en.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,7 +61,7 @@
       <option name="presentableId" value="Default" />
       <updated>1778272718247</updated>
       <workItem from="1778272719414" duration="3659000" />
-      <workItem from="1778347437732" duration="25315000" />
+      <workItem from="1778347437732" duration="27260000" />
     </task>
     <servers />
   </component>
