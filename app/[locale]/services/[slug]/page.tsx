@@ -131,14 +131,11 @@ export default async function ServiceDetailPage(
                 </div>
               </dl>
               <Link
-                href="/contact"
+                href={`/services/${slug}/book`}
                 className="mt-6 flex items-center justify-center rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background hover:bg-accent hover:text-foreground transition-colors"
               >
                 {t("bookCta")}
               </Link>
-              <p className="mt-3 text-center text-xs text-muted">
-                {t("bookingNote")}
-              </p>
             </div>
           </aside>
         </div>

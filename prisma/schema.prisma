@@ -1,0 +1,64 @@
+// Prisma schema for the Bavaria career-restart site.
+// All models live in the Postgres schema "main" (set via DATABASE_URL ?schema=main).
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum OrderStatus {
+  CREATED    // Order row created, PayPal order created, awaiting approval
+  APPROVED   // User approved in PayPal popup (rare to see in DB — usually we go straight to CAPTURED)
+  CAPTURED   // Payment captured, booking is confirmed
+  FAILED     // Capture failed or verification mismatch
+  REFUNDED   // Refunded after capture
+}
+
+/// One payment intent / booking. Created when the user clicks "Pay" on the booking page.
+model Order {
+  id             String      @id @default(cuid())
+  paypalOrderId  String?     @unique
+  serviceSlug    String
+  amountCents    Int
+  currency       String      @default("EUR")
+
+  // Guest info (no client accounts yet)
+  guestEmail     String
+  guestName      String
+
+  // 1:1 sessions only; null for the workshop / async services
+  scheduledFor   DateTime?
+
+  // Optional free-text from the booking form
+  notes          String?
+
+  status         OrderStatus @default(CREATED)
+  capturedAt     DateTime?
+  refundedAt     DateTime?
+
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+
+  @@index([guestEmail])
+  @@index([status])
+  @@index([createdAt])
+}
+
+/// Idempotency log for PayPal webhooks.
+/// Primary key is PayPal's event id — duplicate events are silently rejected by the DB.
+model WebhookEvent {
+  id           String   @id              // PayPal event id
+  eventType    String
+  receivedAt   DateTime @default(now())
+  processedAt  DateTime?
+  status       String   @default("PENDING") // PENDING | PROCESSED | FAILED
+  payload      Json
+  error        String?
+
+  @@index([eventType])
+  @@index([receivedAt])
+}

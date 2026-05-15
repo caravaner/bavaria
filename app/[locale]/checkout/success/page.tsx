@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { db } from "@/lib/db";
 
 export async function generateMetadata(
   props: PageProps<"/[locale]/checkout/success">,
@@ -19,8 +20,28 @@ export default async function CheckoutSuccessPage(
 ) {
   const { locale } = await props.params;
   setRequestLocale(locale);
+  const search = await props.searchParams;
+  const orderId =
+    typeof search.orderId === "string" ? search.orderId : undefined;
+
+  const order = orderId
+    ? await db.order.findUnique({ where: { id: orderId } })
+    : null;
 
   const t = await getTranslations("CheckoutSuccess");
+
+  if (!order) {
+    return <Fallback title={t("notFoundTitle")} body={t("notFoundBody")} />;
+  }
+  if (order.status === "CREATED" || order.status === "APPROVED") {
+    return (
+      <Fallback title={t("pendingTitle")} body={t("pendingBody")} />
+    );
+  }
+  if (order.status !== "CAPTURED") {
+    return <Fallback title={t("notFoundTitle")} body={t("notFoundBody")} />;
+  }
+
   const nextItems = (t.raw("nextItems") ?? []) as string[];
 
   return (
@@ -61,6 +82,31 @@ export default async function CheckoutSuccessPage(
         >
           {t("servicesCta")}
         </Link>
+      </div>
+    </section>
+  );
+}
+
+function Fallback({ title, body }: { title: string; body: string }) {
+  return (
+    <section className="container-page py-24 sm:py-32">
+      <div className="mx-auto max-w-2xl text-center">
+        <h1 className="heading-display text-4xl sm:text-5xl">{title}</h1>
+        <p className="mt-6 text-lg leading-relaxed text-muted">{body}</p>
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
+          <Link
+            href="/services"
+            className="inline-flex items-center rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background hover:bg-accent hover:text-foreground transition-colors"
+          >
+            Back to services
+          </Link>
+          <Link
+            href="/contact"
+            className="inline-flex items-center rounded-full border border-foreground/20 px-6 py-3 text-sm font-medium hover:border-foreground/50 transition-colors"
+          >
+            Contact me
+          </Link>
+        </div>
       </div>
     </section>
   );

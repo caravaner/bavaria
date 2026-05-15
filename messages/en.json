@@ -91,6 +91,45 @@
       }
     }
   },
+  "Booking": {
+    "metaTitle": "Book {service}",
+    "metaDescription": "Book {service} with Ibukun Aliu.",
+    "eyebrow": "Booking",
+    "headingPrefix": "Book",
+    "intro": "Tell me how to reach you. Payment is the next step — once you've paid, I'll be in touch within one business day to take it from here.",
+    "summaryEyebrow": "Your selection",
+    "summaryTotal": "Total",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "notes": "Anything you'd like me to know? (optional)",
+      "submit": "Continue to payment",
+      "submitting": "Setting up payment…",
+      "errors": {
+        "name": "Please enter your name.",
+        "email": "Please enter a valid email address.",
+        "notes": "Notes are too long (max 4000 characters).",
+        "service": "We couldn't find that service.",
+        "createOrder": "Something went wrong setting up your payment. Please try again or contact us."
+      }
+    }
+  },
+  "Checkout": {
+    "metaTitle": "Checkout",
+    "metaDescription": "Complete your booking with PayPal.",
+    "eyebrow": "Checkout",
+    "heading": "Complete your booking",
+    "summaryEyebrow": "Order summary",
+    "for": "for",
+    "total": "Total",
+    "payInstructions": "Choose PayPal or pay with a card — your card is never seen by our servers.",
+    "loadingButton": "Loading payment options…",
+    "errorTitle": "Payment couldn't start",
+    "errorBody": "We couldn't load the PayPal button. Refresh the page or try again later.",
+    "capturingTitle": "Confirming your booking…",
+    "captureError": "Payment was approved but we couldn't confirm your booking. Don't worry — your card was charged at most once. Please reach out and we'll resolve it manually.",
+    "cancelLink": "← Back to services"
+  },
   "CheckoutSuccess": {
     "metaTitle": "Booking confirmed",
     "metaDescription": "Your booking is confirmed.",
@@ -104,7 +143,11 @@
       "A calendar invite once we've agreed on a time"
     ],
     "homeCta": "Back to home",
-    "servicesCta": "Explore other services"
+    "servicesCta": "Explore other services",
+    "pendingTitle": "Confirming your booking…",
+    "pendingBody": "We're confirming your payment with PayPal. Refresh this page in a moment — or check the email I'll send once it's complete.",
+    "notFoundTitle": "Order not found",
+    "notFoundBody": "We couldn't find that order. If you completed a payment and don't have a confirmation, please get in touch and we'll look into it."
   },
   "CheckoutCancel": {
     "metaTitle": "Payment cancelled",
