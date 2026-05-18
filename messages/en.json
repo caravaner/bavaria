@@ -48,7 +48,7 @@
     "metaDescription": "Career restart coaching services — clarity sessions, workshops, interview prep, and CV review.",
     "eyebrow": "Services",
     "heading": "Find the right starting point for your start.",
-    "subhead": "Four ways to work together — pick the one that matches where you are right now. Not sure? Reach out and we'll find the right fit." ,
+    "subhead": "" ,
 
     "card": {
       "learnMore": "Learn more →"
@@ -225,15 +225,15 @@
       "title": "Restart Framework Workshop",
       "shortBlurb": "A practical, supportive workshop that walks you through the essential steps of restarting your career — from mindset to strategy to action.",
       "description": [
-        "Three hours, twelve people, one shared goal: turning a career restart from a fuzzy intention into a real plan. We work through the Restart Framework I've developed working with returners, and you leave with a draft plan and a small cohort of women doing the same work.",
+        "Three hours, two sessions, one shared goal: turning a career restart from a fuzzy intention into a real plan. We work through the Restart Framework I've developed working with returners, and you leave with a draft plan and a small cohort of women doing the same work.",
         "Format: short teaching segments on mindset, positioning, and action; paired exercises; and live coaching of two volunteer participants."
       ],
       "outcomes": [
-        "A drafted restart plan, peer-reviewed",
+        "A drafted restart plan",
         "A repeatable framework for evaluating future moves",
-        "Connections with eleven others on the same journey"
+        "Connections with others on the same journey"
       ],
-      "forWhom": "Women — especially moms — who are mid-restart and learn best with others in the room."
+      "forWhom": "Professionals who are mid-restart and learn best with others in the room"
     },
     "interview-prep": {
       "title": "Interview Prep",
@@ -258,6 +258,15 @@
       ],
       "outcomes": [],
       "forWhom": "Anyone whose CV needs to make the case for a new chapter."
+    },
+    "test-50": {
+      "title": "Production test (€0.50)",
+      "shortBlurb": "Internal end-to-end payment test — not a real service.",
+      "description": [
+        "This service exists only to verify the live payment flow with a small real charge. If you've reached this page outside of an internal test, please ignore it and head back to the main services."
+      ],
+      "outcomes": [],
+      "forWhom": "Internal use only."
     }
   },
   "LocaleSwitcher": {

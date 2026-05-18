@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { captureOrder, PayPalError } from "@/lib/paypal";
-import { getService } from "@/lib/services";
+import { findService } from "@/lib/services";
 
 /**
  * Capture endpoint — called by the PayPal Smart Buttons onApprove callback.
@@ -44,7 +44,9 @@ export async function POST(req: Request) {
 
   // Verify the service still exists and matches the order's stored price.
   // This protects against price drift between order creation and capture.
-  const service = getService(order.serviceSlug);
+  // findService ignores `active` so a service deactivated mid-flight doesn't
+  // reject a payment for an order that was created while it was live.
+  const service = findService(order.serviceSlug);
   if (!service || service.priceCents !== order.amountCents) {
     await db.order.update({
       where: { id: order.id },

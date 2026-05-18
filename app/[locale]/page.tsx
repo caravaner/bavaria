@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { ServiceCard } from "@/components/service-card";
 import { TestimonialCard } from "@/components/testimonial-card";
-import { services } from "@/lib/services";
+import { getActiveServices } from "@/lib/services";
 
 export default async function Home(props: PageProps<"/[locale]">) {
   const { locale } = await props.params;
@@ -129,7 +129,7 @@ export default async function Home(props: PageProps<"/[locale]">) {
             </Link>
           </div>
           <div className="grid gap-5 sm:grid-cols-2">
-            {services.map((s) => (
+            {getActiveServices().map((s) => (
               <ServiceCard key={s.slug} service={s} showPrice={false} />
             ))}
           </div>

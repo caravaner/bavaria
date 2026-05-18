@@ -5,14 +5,14 @@ import { Link } from "@/i18n/navigation";
 import {
   formatDuration,
   formatPrice,
+  getActiveServices,
   getService,
-  services,
 } from "@/lib/services";
 import { routing } from "@/i18n/routing";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
-    services.map((s) => ({ locale, slug: s.slug })),
+    getActiveServices().map((s) => ({ locale, slug: s.slug })),
   );
 }
 

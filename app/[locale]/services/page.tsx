@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ServiceCard } from "@/components/service-card";
-import { services } from "@/lib/services";
+import { getActiveServices } from "@/lib/services";
 
 export async function generateMetadata(
   props: PageProps<"/[locale]/services">,
@@ -36,7 +36,7 @@ export default async function ServicesPage(
 
       <section className="container-page py-12">
         <div className="grid gap-5 sm:grid-cols-2">
-          {services.map((s) => (
+          {getActiveServices().map((s) => (
             <ServiceCard key={s.slug} service={s} />
           ))}
         </div>

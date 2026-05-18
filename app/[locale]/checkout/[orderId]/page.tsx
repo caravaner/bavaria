@@ -4,8 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { PayPalButtons } from "@/components/paypal-buttons";
 import { db } from "@/lib/db";
-import { getService } from "@/lib/services";
-import { formatPrice } from "@/lib/services";
+import { findService, formatPrice } from "@/lib/services";
 
 // Map our app locale to PayPal's locale codes
 const PAYPAL_LOCALES: Record<string, string> = {
@@ -40,7 +39,9 @@ export default async function CheckoutPage(
     redirect({ href: `/checkout/success?orderId=${order.id}`, locale });
   }
 
-  const service = getService(order.serviceSlug);
+  // findService (not getService): an order created while a service was active
+  // must still render at checkout even if it's been deactivated since.
+  const service = findService(order.serviceSlug);
   const t = await getTranslations("Checkout");
   const data = await getTranslations("ServicesData");
   const serviceTitle = data(
@@ -108,4 +109,4 @@ export default async function CheckoutPage(
 }
 
 // Service may be referenced; avoid TS warning
-void getService;
+void findService;
