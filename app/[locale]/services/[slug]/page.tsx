@@ -5,14 +5,14 @@ import { Link } from "@/i18n/navigation";
 import {
   formatDuration,
   formatPrice,
+  getActiveServices,
   getService,
-  services,
 } from "@/lib/services";
 import { routing } from "@/i18n/routing";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
-    services.map((s) => ({ locale, slug: s.slug })),
+    getActiveServices().map((s) => ({ locale, slug: s.slug })),
   );
 }
 
@@ -131,14 +131,11 @@ export default async function ServiceDetailPage(
                 </div>
               </dl>
               <Link
-                href="/contact"
+                href={`/services/${slug}/book`}
                 className="mt-6 flex items-center justify-center rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background hover:bg-accent hover:text-foreground transition-colors"
               >
                 {t("bookCta")}
               </Link>
-              <p className="mt-3 text-center text-xs text-muted">
-                {t("bookingNote")}
-              </p>
             </div>
           </aside>
         </div>

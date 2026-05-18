@@ -48,7 +48,7 @@
     "metaDescription": "Career restart coaching services — clarity sessions, workshops, interview prep, and CV review.",
     "eyebrow": "Services",
     "heading": "Find the right starting point for your start.",
-    "subhead": "Four ways to work together — pick the one that matches where you are right now. Not sure? Reach out and we'll find the right fit." ,
+    "subhead": "" ,
 
     "card": {
       "learnMore": "Learn more →"
@@ -91,6 +91,45 @@
       }
     }
   },
+  "Booking": {
+    "metaTitle": "Book {service}",
+    "metaDescription": "Book {service} with Ibukun Aliu.",
+    "eyebrow": "Booking",
+    "headingPrefix": "Book",
+    "intro": "Tell me how to reach you. Payment is the next step — once you've paid, I'll be in touch within one business day to take it from here.",
+    "summaryEyebrow": "Your selection",
+    "summaryTotal": "Total",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "notes": "Anything you'd like me to know? (optional)",
+      "submit": "Continue to payment",
+      "submitting": "Setting up payment…",
+      "errors": {
+        "name": "Please enter your name.",
+        "email": "Please enter a valid email address.",
+        "notes": "Notes are too long (max 4000 characters).",
+        "service": "We couldn't find that service.",
+        "createOrder": "Something went wrong setting up your payment. Please try again or contact us."
+      }
+    }
+  },
+  "Checkout": {
+    "metaTitle": "Checkout",
+    "metaDescription": "Complete your booking with PayPal.",
+    "eyebrow": "Checkout",
+    "heading": "Complete your booking",
+    "summaryEyebrow": "Order summary",
+    "for": "for",
+    "total": "Total",
+    "payInstructions": "Choose PayPal or pay with a card — your card is never seen by our servers.",
+    "loadingButton": "Loading payment options…",
+    "errorTitle": "Payment couldn't start",
+    "errorBody": "We couldn't load the PayPal button. Refresh the page or try again later.",
+    "capturingTitle": "Confirming your booking…",
+    "captureError": "Payment was approved but we couldn't confirm your booking. Don't worry — your card was charged at most once. Please reach out and we'll resolve it manually.",
+    "cancelLink": "← Back to services"
+  },
   "CheckoutSuccess": {
     "metaTitle": "Booking confirmed",
     "metaDescription": "Your booking is confirmed.",
@@ -104,7 +143,11 @@
       "A calendar invite once we've agreed on a time"
     ],
     "homeCta": "Back to home",
-    "servicesCta": "Explore other services"
+    "servicesCta": "Explore other services",
+    "pendingTitle": "Confirming your booking…",
+    "pendingBody": "We're confirming your payment with PayPal. Refresh this page in a moment — or check the email I'll send once it's complete.",
+    "notFoundTitle": "Order not found",
+    "notFoundBody": "We couldn't find that order. If you completed a payment and don't have a confirmation, please get in touch and we'll look into it."
   },
   "CheckoutCancel": {
     "metaTitle": "Payment cancelled",
@@ -168,7 +211,7 @@
       "title": "Clarity Session",
       "shortBlurb": "A focused, one-to-one session designed to help you gain direction, understand your next steps, and move forward with confidence.",
       "description": [
-        "Most career stuckness isn't a lack of options — it's a lack of clarity about which option matches who you actually are right now. We spend the hour cutting through that.",
+        "Sometimes, feeling stuck in you career is not caused by a lack of options — it's a lack of clarity about which option matches who you actually are right now. We spend the time cutting through that.",
         "You bring the situation: a return after a break, a pivot you're weighing, an offer on the table, or a vague sense that you're drifting. We end with a written one-page plan you can act on this week."
       ],
       "outcomes": [
@@ -182,15 +225,15 @@
       "title": "Restart Framework Workshop",
       "shortBlurb": "A practical, supportive workshop that walks you through the essential steps of restarting your career — from mindset to strategy to action.",
       "description": [
-        "Three hours, twelve people, one shared goal: turning a career restart from a fuzzy intention into a real plan. We work through the Restart Framework I've developed working with returners, and you leave with a draft plan and a small cohort of women doing the same work.",
+        "Three hours, two sessions, one shared goal: turning a career restart from a fuzzy intention into a real plan. We work through the Restart Framework I've developed working with returners, and you leave with a draft plan and a small cohort of women doing the same work.",
         "Format: short teaching segments on mindset, positioning, and action; paired exercises; and live coaching of two volunteer participants."
       ],
       "outcomes": [
-        "A drafted restart plan, peer-reviewed",
+        "A drafted restart plan",
         "A repeatable framework for evaluating future moves",
-        "Connections with eleven others on the same journey"
+        "Connections with others on the same journey"
       ],
-      "forWhom": "Women — especially moms — who are mid-restart and learn best with others in the room."
+      "forWhom": "Professionals who are mid-restart and learn best with others in the room"
     },
     "interview-prep": {
       "title": "Interview Prep",
@@ -215,6 +258,15 @@
       ],
       "outcomes": [],
       "forWhom": "Anyone whose CV needs to make the case for a new chapter."
+    },
+    "test-50": {
+      "title": "Production test (€0.50)",
+      "shortBlurb": "Internal end-to-end payment test — not a real service.",
+      "description": [
+        "This service exists only to verify the live payment flow with a small real charge. If you've reached this page outside of an internal test, please ignore it and head back to the main services."
+      ],
+      "outcomes": [],
+      "forWhom": "Internal use only."
     }
   },
   "LocaleSwitcher": {
