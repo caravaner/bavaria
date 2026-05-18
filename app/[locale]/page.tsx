@@ -19,7 +19,7 @@ export default async function Home(props: PageProps<"/[locale]">) {
       {/* Hero */}
       <section className="container-page pt-20 pb-24 sm:pt-28 sm:pb-32">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16 items-center">
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-5">
             <p className="eyebrow">{t("eyebrow")}</p>
             <h1 className="heading-display mt-5 text-5xl sm:text-6xl lg:text-7xl">
               {t("headlineBefore")}{" "}
@@ -50,14 +50,14 @@ export default async function Home(props: PageProps<"/[locale]">) {
               </Link>
             </div>
           </div>
-          <div className="lg:col-span-5">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-accent-soft">
+          <div className="lg:col-span-7">
+            <div className="relative aspect-[3/2] overflow-hidden rounded-3xl bg-accent-soft">
               <Image
                 src="/images/site.jpg"
                 alt={t("heroImageAlt")}
                 fill
                 priority
-                sizes="(min-width: 1024px) 40vw, 100vw"
+                sizes="(min-width: 1024px) 58vw, 100vw"
                 className="object-cover"
               />
             </div>

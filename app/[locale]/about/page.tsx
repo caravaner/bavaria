@@ -31,15 +31,17 @@ export default async function AboutPage(props: PageProps<"/[locale]/about">) {
       <section className="container-page pt-20 pb-16 sm:pt-28">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-accent-soft sticky top-24">
-              <Image
-                src={author.imageSrc}
-                alt={a("portraitAlt", { name: a("name") })}
-                fill
-                priority
-                sizes="(min-width: 1024px) 40vw, 100vw"
-                className="object-cover"
-              />
+            <div className="sticky top-24">
+              <div className="relative aspect-[2/3] overflow-hidden rounded-3xl bg-accent-soft">
+                <Image
+                  src={author.imageSrc}
+                  alt={a("portraitAlt", { name: a("name") })}
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
             </div>
           </div>
           <div className="lg:col-span-7">
