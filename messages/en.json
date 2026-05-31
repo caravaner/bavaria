@@ -48,8 +48,7 @@
     "metaDescription": "Career restart coaching services — clarity sessions, workshops, interview prep, and CV review.",
     "eyebrow": "Services",
     "heading": "Find the right starting point for your start.",
-    "subhead": "" ,
-
+    "subhead": "",
     "card": {
       "learnMore": "Learn more →"
     }
@@ -219,7 +218,9 @@
         "Three concrete next moves, prioritized",
         "A written summary delivered within 24 hours"
       ],
-      "forWhom": "Anyone weighing a return, a pivot, or a hard career decision and needing structured thinking — fast."
+      "forWhom": [
+        "Anyone weighing a return, a pivot, or a hard career decision and needing structured thinking — fast."
+      ]
     },
     "restart-framework-workshop": {
       "title": "Restart Framework Workshop",
@@ -233,7 +234,9 @@
         "A repeatable framework for evaluating future moves",
         "Connections with others on the same journey"
       ],
-      "forWhom": "Professionals who are mid-restart and learn best with others in the room"
+      "forWhom": [
+        "Professionals who are mid-restart and learn best with others in the room"
+      ]
     },
     "interview-prep": {
       "title": "Interview Prep",
@@ -247,17 +250,22 @@
         "Specific, actionable feedback on content, structure, and delivery",
         "A sharpened answer to the questions you tend to fumble"
       ],
-      "forWhom": "Anyone with an interview on the calendar in the next six weeks."
+      "forWhom": [
+        "Anyone with an interview on the calendar in the next six weeks."
+      ]
     },
     "cv-review": {
       "title": "CV Review & Positioning",
-      "shortBlurb": "A professional review of your CV with tailored recommendations, updated wording for key sections, and one round of edits.",
+      "shortBlurb": "A 30 minute call to understand your areas of interest and a professional review of your CV with tailored recommendations, updated wording for key sections, and one round of edits.",
       "description": [
         "Your CV gets read in under thirty seconds. I rewrite it to survive that and earn the second read — repositioning your experience around the value you actually create, not just the tasks you've done.",
         "You send me your current CV and the kind of role you're targeting. I return tailored recommendations, updated wording for your key sections, and one round of edits to incorporate your feedback."
       ],
       "outcomes": [],
-      "forWhom": "Anyone whose CV needs to make the case for a new chapter."
+      "forWhom": [
+        "Anyone whose CV needs to make the case for a new chapter.",
+        "If you’re preparing for your next step and want your CV to reflect who you are today — not who you were years ago — this service is for you."
+      ]
     },
     "test-50": {
       "title": "Production test (€0.50)",
@@ -266,7 +274,9 @@
         "This service exists only to verify the live payment flow with a small real charge. If you've reached this page outside of an internal test, please ignore it and head back to the main services."
       ],
       "outcomes": [],
-      "forWhom": "Internal use only."
+      "forWhom": [
+        "Internal use only."
+      ]
     }
   },
   "LocaleSwitcher": {
