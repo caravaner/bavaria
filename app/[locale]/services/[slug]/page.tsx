@@ -49,6 +49,9 @@ export default async function ServiceDetailPage(
   const outcomes = (dataRaw.raw(
     `${slug}.outcomes` as Parameters<typeof dataRaw>[0],
   ) ?? []) as string[];
+  const forWhom = (dataRaw.raw(
+    `${slug}.forWhom` as Parameters<typeof dataRaw>[0],
+  ) ?? []) as string[];
 
   return (
     <>
@@ -90,9 +93,11 @@ export default async function ServiceDetailPage(
 
             <div className="mt-16">
               <p className="eyebrow">{t("forWhomHeading")}</p>
-              <p className="mt-4 text-lg leading-relaxed">
-                {data(`${slug}.forWhom` as Parameters<typeof data>[0])}
-              </p>
+              <div className="mt-4 space-y-4 text-lg leading-relaxed">
+                {forWhom.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
             </div>
           </div>
 
