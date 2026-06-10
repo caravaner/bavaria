@@ -9,6 +9,10 @@ export type ServiceShape = {
   capacity?: number;
   /** Delivery window in working days for async services, e.g. [3, 5]. */
   deliveryDays?: [number, number];
+  /** Fixed-schedule events (workshops, cohorts). ISO dates "YYYY-MM-DD". */
+  eventDates?: string[];
+  /** Free-form start time for display, e.g. "20:30 CEST". Shown on a separate row. */
+  eventTime?: string;
   priceCents: number;
   currency: "EUR";
 };
@@ -24,7 +28,9 @@ export const services: ServiceShape[] = [
   {
     slug: "restart-framework-workshop",
     active: true,
-    durationMinutes: 180,
+    durationMinutes: 90,
+    eventDates: ["2026-07-14", "2026-07-16"],
+    eventTime: "20:30 CEST",
     priceCents: 6900,
     currency: "EUR",
   },
@@ -95,6 +101,37 @@ export function formatPrice(
     currency,
     minimumFractionDigits: hasCents ? 2 : 0,
   }).format(cents / 100);
+}
+
+/** Formats ISO date strings for display. Collapses same-month entries:
+ *   ["2026-07-14", "2026-07-16"]                → "14 & 16 July 2026"
+ *   ["2026-07-14", "2026-08-02"]                → "14 July & 2 August 2026" */
+export function formatEventDates(dates: string[], locale = "en"): string {
+  if (dates.length === 0) return "";
+  const parsed = dates.map((d) => new Date(d));
+
+  const dayFmt = new Intl.DateTimeFormat(locale, {
+    day: "numeric",
+    timeZone: "UTC",
+  });
+  const monthYearFmt = new Intl.DateTimeFormat(locale, {
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+  const fullDateFmt = new Intl.DateTimeFormat(locale, {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+
+  const sameMonthYear = parsed.every(
+    (d) => monthYearFmt.format(d) === monthYearFmt.format(parsed[0]),
+  );
+  return sameMonthYear
+    ? `${parsed.map((d) => dayFmt.format(d)).join(" & ")} ${monthYearFmt.format(parsed[0])}`
+    : parsed.map((d) => fullDateFmt.format(d)).join(" & ");
 }
 
 export function formatDuration(minutes: number, locale = "en"): string {
