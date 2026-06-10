@@ -5,6 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { BookingForm } from "@/components/booking-form";
 import {
   formatDuration,
+  formatEventDates,
   formatPrice,
   getService,
 } from "@/lib/services";
@@ -65,6 +66,20 @@ export default async function BookingPage(
             <p className="mt-2 text-sm text-muted">{blurb}</p>
 
             <dl className="mt-5 space-y-2 text-sm">
+              {service.eventDates && service.eventDates.length > 0 && (
+                <div className="flex justify-between gap-4">
+                  <dt className="text-muted">{detail("dates")}</dt>
+                  <dd className="text-right">
+                    {formatEventDates(service.eventDates, locale)}
+                  </dd>
+                </div>
+              )}
+              {service.eventTime && (
+                <div className="flex justify-between gap-4">
+                  <dt className="text-muted">{detail("time")}</dt>
+                  <dd className="text-right">{service.eventTime}</dd>
+                </div>
+              )}
               {service.durationMinutes && (
                 <div className="flex justify-between">
                   <dt className="text-muted">{detail("duration")}</dt>

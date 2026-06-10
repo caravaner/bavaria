@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import {
   formatDuration,
+  formatEventDates,
   formatPrice,
   getActiveServices,
   getService,
@@ -105,6 +106,20 @@ export default async function ServiceDetailPage(
             <div className="rounded-2xl border border-subtle bg-surface p-8 sticky top-24">
               <p className="eyebrow">{t("asideEyebrow")}</p>
               <dl className="mt-4 space-y-3 text-sm">
+                {service.eventDates && service.eventDates.length > 0 && (
+                  <div className="flex justify-between gap-4">
+                    <dt className="text-muted">{t("dates")}</dt>
+                    <dd className="text-right">
+                      {formatEventDates(service.eventDates, locale)}
+                    </dd>
+                  </div>
+                )}
+                {service.eventTime && (
+                  <div className="flex justify-between gap-4">
+                    <dt className="text-muted">{t("time")}</dt>
+                    <dd className="text-right">{service.eventTime}</dd>
+                  </div>
+                )}
                 {service.durationMinutes && (
                   <div className="flex justify-between">
                     <dt className="text-muted">{t("duration")}</dt>
