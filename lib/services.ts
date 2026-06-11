@@ -28,7 +28,7 @@ export const services: ServiceShape[] = [
   {
     slug: "restart-framework-workshop",
     active: true,
-    durationMinutes: 90,
+    durationMinutes: 180,
     eventDates: ["2026-07-14", "2026-07-16"],
     eventTime: "20:30 CEST",
     priceCents: 6900,
