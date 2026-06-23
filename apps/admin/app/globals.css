@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  /* Neutral slate base with deeper contrast. */
+  --color-background: #f8fafc; /* slate-50  — app canvas */
+  --color-surface: #ffffff; /* cards, sidebar, tables */
+  --color-surface-2: #f1f5f9; /* slate-100 — subtle fills, table headers */
+  --color-foreground: #0f172a; /* slate-900 */
+  --color-muted: #64748b; /* slate-500 */
+  --color-border: #e2e8f0; /* slate-200 */
+
+  /* Accent */
+  --color-accent: #4f46e5; /* indigo-600 */
+  --color-accent-hover: #4338ca; /* indigo-700 */
+  --color-accent-soft: #eef2ff; /* indigo-50  — active nav, soft fills */
+
+  /* Status — solid + soft pairs for badges */
+  --color-success: #15803d; /* green-700 */
+  --color-success-soft: #dcfce7; /* green-100 */
+  --color-warning: #b45309; /* amber-700 */
+  --color-warning-soft: #fef3c7; /* amber-100 */
+  --color-info: #1d4ed8; /* blue-700 */
+  --color-info-soft: #dbeafe; /* blue-100 */
+  --color-danger: #b91c1c; /* red-700 */
+  --color-danger-soft: #fee2e2; /* red-100 */
+  --color-neutral-soft: #f1f5f9; /* slate-100 */
+}
+
+@layer base {
+  html {
+    color: var(--color-foreground);
+    background: var(--color-background);
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    font-family:
+      ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  }
+  /* Smooth, consistent hover feedback for every interactive element. */
+  a,
+  button,
+  select,
+  [role="button"] {
+    transition:
+      color 150ms ease,
+      background-color 150ms ease,
+      border-color 150ms ease,
+      box-shadow 150ms ease,
+      opacity 150ms ease;
+  }
+}

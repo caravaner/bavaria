@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bavaria
 
-## Getting Started
+An npm-workspaces monorepo for the Bavaria career-restart site.
 
-First, run the development server:
+## Layout
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+apps/
+  web/      Public marketing + booking site (Next.js). Holds NO database access.
+  admin/    Admin dashboard + the API that owns the database (Next.js).
+packages/
+  db/       Prisma schema, generated client, data-access repos, seed (shared by admin only).
+scripts/
+  with-env.mjs   Loads the repo-root .env.local/.env, then runs a command.
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Data flow
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The **web** app never touches Postgres. It reads services and drives the
+booking/payment flow over HTTP from the **admin** app:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `GET /api/services`, `GET /api/services/[slug]` — public, read-only.
+- `POST /api/orders`, `GET /api/orders/[id]`, `POST /api/orders/[id]/capture` —
+  internal; gated by the shared `API_INTERNAL_SECRET` the web server sends.
+- `POST /api/paypal/webhook` — PayPal calls the admin app directly.
 
-## Learn More
+The PayPal Smart Buttons in the browser post to the web app's same-origin
+`/api/paypal/capture-order`, which forwards to the admin API server-to-server.
+So the browser stays same-origin and the web app holds no DB credentials.
 
-To learn more about Next.js, take a look at the following resources:
+### Admin auth
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+No auth library. Passwords are scrypt hashes (`packages/db/src/password.js`);
+sessions are stateless HMAC-signed cookies (`apps/admin/lib/session.ts`). There
+is no public sign-up — the first account is created by the seed. Signed-in
+admins can change their own password under **Account** (email-based reset waits
+for the mailing service).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Setup
 
-## Deploy on Vercel
+```bash
+npm install
+cp .env.example .env.local   # then fill in values
+npm run db:generate          # generate the Prisma client
+npm run db:migrate           # apply migrations (dev: prisma migrate dev)
+npm run db:seed              # create the superuser admin + import services
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The seed creates an admin user (default `superuser` / `password` — override with
+`SEED_ADMIN_USERNAME` / `SEED_ADMIN_PASSWORD`) and imports the initial services.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Develop
+
+```bash
+npm run dev:web      # public site  → http://localhost:3000
+npm run dev:admin    # admin + API  → http://localhost:3001
+```
+
+Run both (in separate terminals) so the web app can reach the admin API.
+
+## Build
+
+```bash
+npm run build        # db generate + migrate deploy, then build admin + web
+```
+
+## Deployment
+
+Deploy `apps/admin` and `apps/web` as two separate apps. Point the admin app at
+its own subdomain (e.g. `admin.yoursite.com`) and set the web app's
+`ADMIN_API_URL` to that origin. Register the PayPal webhook against
+`https://admin.yoursite.com/api/paypal/webhook`.
+
+## Notes
+
+This repo uses Next.js 16 with breaking changes from older versions (e.g.
+middleware is now `proxy.ts`). See `AGENTS.md` and `node_modules/next/dist/docs/`
+before changing framework-level code.

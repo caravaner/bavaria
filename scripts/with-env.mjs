@@ -1,19 +1,32 @@
 import { spawn } from "node:child_process";
 import { existsSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import process from "node:process";
+
+// Repo-root-relative env loading, so this works no matter which workspace
+// invokes it (apps/web, apps/admin, packages/db all share the root env files).
+const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
 
 // Precedence: real shell env > .env.local > .env.
 // loadEnvFile doesn't override already-set vars, so the first file loaded wins.
 for (const file of [".env.local", ".env"]) {
-  if (existsSync(file)) process.loadEnvFile(file);
+  const path = join(repoRoot, file);
+  if (existsSync(path)) process.loadEnvFile(path);
 }
 
-const args = process.argv.slice(2);
-const next = "./node_modules/next/dist/bin/next";
+const [command, ...args] = process.argv.slice(2);
+if (!command) {
+  console.error("usage: with-env <command> [args...]");
+  process.exit(1);
+}
 
-const child = spawn(process.execPath, [next, ...args], {
+// `shell: true` lets us resolve binaries from PATH (npm injects each
+// workspace's and the root's node_modules/.bin), e.g. `next`, `prisma`.
+const child = spawn(command, args, {
   stdio: "inherit",
   env: process.env,
+  shell: true,
 });
 
 child.on("exit", (code, signal) => {

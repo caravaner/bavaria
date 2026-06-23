@@ -2,29 +2,23 @@
   "name": "bavaria",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
   "scripts": {
-    "dev": "node scripts/with-env.mjs dev",
-    "build": "prisma generate && prisma migrate deploy && next build",
-    "start": "node scripts/with-env.mjs start",
-    "lint": "eslint"
-  },
-  "dependencies": {
-    "@prisma/adapter-pg": "^7.8.0",
-    "@prisma/client": "^7.8.0",
-    "next": "16.2.6",
-    "next-intl": "^4.11.2",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "devs": "npm run dev:admin & npm run dev:web",
+    "dev:web": "npm run dev -w @bavaria/web",
+    "dev:admin": "npm run dev -w @bavaria/admin",
+    "build": "npm run db:generate && npm run db:migrate:deploy && npm run build -w @bavaria/admin && npm run build -w @bavaria/web",
+    "db:generate": "npm run generate -w @bavaria/db",
+    "db:migrate": "npm run migrate -w @bavaria/db",
+    "db:migrate:deploy": "npm run migrate:deploy -w @bavaria/db",
+    "db:seed": "npm run seed -w @bavaria/db",
+    "db:studio": "npm run studio -w @bavaria/db",
+    "lint": "npm run lint --workspaces --if-present"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.2.6",
-    "prisma": "^7.8.0",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "prisma": "^7.8.0"
   }
 }

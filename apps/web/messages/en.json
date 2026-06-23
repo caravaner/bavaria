@@ -1,0 +1,220 @@
+{
+  "Nav": {
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "bookCta": "Book your session"
+  },
+  "Footer": {
+    "tagline": "Coaching with {name}.",
+    "explore": "Explore",
+    "getInTouch": "Get in touch",
+    "rights": "© {year} {brand}. All rights reserved."
+  },
+  "Home": {
+    "eyebrow": "Career Restart Coaching",
+    "headlineBefore": "Restart your career with",
+    "headlineFirstAccent": "clarity",
+    "headlineMiddle": "and",
+    "headlineSecondAccent": "confidence",
+    "subhead": "Empowering people — especially moms — to return to the workforce with renewed purpose, practical strategy, and unshakeable confidence.",
+    "primaryCta": "Book your session",
+    "secondaryCta": "See services",
+    "heroImageAlt": "Career Restart Coaching",
+    "aboutEyebrow": "About",
+    "aboutHeading": "I've walked this road myself.",
+    "aboutReadMore": "Read more about me →",
+    "testimonialsEyebrow": "Testimonials",
+    "testimonialsHeading": "What clients say.",
+    "servicesEyebrow": "Services",
+    "servicesHeading": "Ways to work together.",
+    "servicesViewAll": "View all →",
+    "ctaEyebrow": "Your next chapter",
+    "ctaHeading": "You're not starting from scratch — you're starting from experience.",
+    "ctaFollow": "Let's build your next chapter together.",
+    "ctaButton": "Book your session"
+  },
+  "About": {
+    "metaTitle": "About",
+    "metaDescription": "About {name}, {role}.",
+    "eyebrow": "About",
+    "pillarsEyebrow": "What guides my work",
+    "pillarsHeading": "Vision, mission, and message.",
+    "closingEyebrow": "Your next chapter",
+    "closingCta": "Book your session"
+  },
+  "Services": {
+    "metaTitle": "Services",
+    "metaDescription": "Career restart coaching services — clarity sessions, workshops, interview prep, and CV review.",
+    "eyebrow": "Services",
+    "heading": "Find the right starting point for your start.",
+    "subhead": "",
+    "card": {
+      "learnMore": "Learn more →"
+    }
+  },
+  "ServiceDetail": {
+    "backLink": "← All services",
+    "eyebrow": "Service",
+    "outcomesHeading": "What you'll leave with",
+    "forWhomHeading": "Who this is for",
+    "asideEyebrow": "Details",
+    "duration": "Duration",
+    "dates": "Dates",
+    "time": "Time",
+    "capacity": "Capacity",
+    "delivery": "Delivery",
+    "price": "Price",
+    "capacityValue": "Up to {n}",
+    "deliveryValue": "{from}–{to} working days",
+    "bookCta": "Book your session",
+    "bookingNote": "Online booking is coming soon."
+  },
+  "Contact": {
+    "metaTitle": "Contact",
+    "metaDescription": "Get in touch to book a session or ask a question.",
+    "eyebrow": "Contact",
+    "heading": "Let's talk.",
+    "intro": "Tell me a little about what's going on and which session sounds right. I read every message and respond within two business days.",
+    "orEmail": "Or email directly",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "What's on your mind?",
+      "submit": "Send message",
+      "sending": "Sending…",
+      "successHeading": "Message received.",
+      "successBody": "Thanks — I'll be in touch within two business days.",
+      "errors": {
+        "name": "Please enter your name.",
+        "email": "Please enter a valid email address.",
+        "message": "Please write a message (10–4000 characters).",
+        "submit": "Something went wrong sending your message. Please try again."
+      }
+    }
+  },
+  "Booking": {
+    "metaTitle": "Book {service}",
+    "metaDescription": "Book {service} with Ibukun Aliu.",
+    "eyebrow": "Booking",
+    "headingPrefix": "Book",
+    "intro": "Tell me how to reach you. Payment is the next step — once you've paid, I'll be in touch within one business day to take it from here.",
+    "summaryEyebrow": "Your selection",
+    "summaryTotal": "Total",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "notes": "Anything you'd like me to know? (optional)",
+      "submit": "Continue to payment",
+      "submitting": "Setting up payment…",
+      "errors": {
+        "name": "Please enter your name.",
+        "email": "Please enter a valid email address.",
+        "notes": "Notes are too long (max 4000 characters).",
+        "service": "We couldn't find that service.",
+        "createOrder": "Something went wrong setting up your payment. Please try again or contact us."
+      }
+    }
+  },
+  "Checkout": {
+    "metaTitle": "Checkout",
+    "metaDescription": "Complete your booking with PayPal.",
+    "eyebrow": "Checkout",
+    "heading": "Complete your booking",
+    "summaryEyebrow": "Order summary",
+    "for": "for",
+    "total": "Total",
+    "payInstructions": "Choose PayPal or pay with a card — your card is never seen by our servers.",
+    "loadingButton": "Loading payment options…",
+    "errorTitle": "Payment couldn't start",
+    "errorBody": "We couldn't load the PayPal button. Refresh the page or try again later.",
+    "capturingTitle": "Confirming your booking…",
+    "captureError": "Payment was approved but we couldn't confirm your booking. Don't worry — your card was charged at most once. Please reach out and we'll resolve it manually.",
+    "cancelLink": "← Back to services"
+  },
+  "CheckoutSuccess": {
+    "metaTitle": "Booking confirmed",
+    "metaDescription": "Your booking is confirmed.",
+    "eyebrow": "Payment confirmed",
+    "heading": "You're booked.",
+    "body": "Your payment was received and a confirmation email is on its way. I'll be in touch within one business day to set up our session — keep an eye on your inbox.",
+    "next": "What to expect next",
+    "nextItems": [
+      "A confirmation email with everything you'll need",
+      "A short questionnaire to help me prepare",
+      "A calendar invite once we've agreed on a time"
+    ],
+    "homeCta": "Back to home",
+    "servicesCta": "Explore other services",
+    "pendingTitle": "Confirming your booking…",
+    "pendingBody": "We're confirming your payment with PayPal. Refresh this page in a moment — or check the email I'll send once it's complete.",
+    "notFoundTitle": "Order not found",
+    "notFoundBody": "We couldn't find that order. If you completed a payment and don't have a confirmation, please get in touch and we'll look into it."
+  },
+  "CheckoutCancel": {
+    "metaTitle": "Payment cancelled",
+    "metaDescription": "Your payment was cancelled and no charge was made.",
+    "eyebrow": "Payment cancelled",
+    "heading": "No worries — nothing was charged.",
+    "body": "Your payment was cancelled and no charge was made to your account. Whenever you're ready, you can pick up where you left off, or reach out if you have questions.",
+    "tryAgain": "Back to services",
+    "contact": "Get in touch"
+  },
+  "Author": {
+    "name": "Ibukun Aliu",
+    "title": "Career Restart Coach",
+    "shortBio": "I help people — especially moms — return to the workforce with renewed purpose, practical strategy, and unshakeable confidence.",
+    "bio": {
+      "p1": "My name is Ibukun Aliu, and I am a Career Restart Coach.",
+      "p2": "With a background in Psychology and Human Resource Management, and a career in Talent Acquisition, I've spent years understanding people, potential, and the power of the right opportunity.",
+      "p3": "My passion for career restarts is deeply personal. I've walked this road myself. I know what it feels like to step back into the workforce after a break — the uncertainty, the self-doubt, the desire for clarity, and the hope for a fresh start. With the right support, that journey can become transformative.",
+      "p4": "One group especially close to my heart is women — particularly moms — who are ready to restart or pivot their careers. I understand the courage it takes to return, and I'm committed to making that transition easier, clearer, and more empowering."
+    },
+    "pillars": {
+      "vision": {
+        "label": "Vision",
+        "title": "Be a mindset shifter.",
+        "body": "Helping people shed fear and doubt, embrace their true selves, and confidently restart their careers."
+      },
+      "mission": {
+        "label": "Mission",
+        "title": "Build a community that lifts you back up.",
+        "body": "Mentoring professionals through their return-to-work journey, building a supportive community, and sharing my story through writing and thought leadership."
+      },
+      "message": {
+        "label": "Message",
+        "title": "I restarted my career, and so can you.",
+        "body": "With new skills, confidence, and resilience, you can build the future you desire. If you're willing to learn, grow, and step forward with courage, your restart is absolutely possible."
+      }
+    },
+    "portraitAlt": "Portrait of {name}",
+    "ctaQuote": "You're not starting from scratch — you're starting from experience.",
+    "ctaFollow": "Let's build your next chapter together."
+  },
+  "Testimonials": {
+    "miriam": {
+      "name": "Miriam",
+      "context": "Interview preparation",
+      "body": "I recently worked with Ibukun Aliu for interview preparation, and the experience was truly invaluable. Our full interview simulation felt realistic and highlighted exactly where I needed to improve. Her Talent Acquisition expertise came through in the clear, actionable feedback she provided, helping me refine both my delivery and confidence. I felt significantly more prepared thanks to her guidance. I highly recommend her to anyone looking to elevate their career."
+    },
+    "hannah": {
+      "name": "Hannah",
+      "context": "Offer negotiation",
+      "body": "I sought out Ibukun because I needed clarity on how to make a meaningful negotiation and decision between two offers. Ibukun listened carefully and responded with calm confidence. One statement stayed with me: “We don’t have because we do not ask.” She encouraged me to be clear and direct about what I wanted, to communicate transparently that I was considering another opportunity, and to articulate why I was genuinely interested in working with this employer. I followed her advice and wrote to the employer, clearly outlining my expectations. To my surprise and gratitude, every point I raised was addressed positively. The outcome exceeded my expectations."
+    },
+    "patricia": {
+      "name": "Patricia",
+      "context": "Restarting after a move to Germany",
+      "body": "After moving to Germany, I struggled to restart my career while still learning the language. Despite ten years of experience, I felt like a junior again. Working with Ibukun changed everything. She reviewed my CV, prepared me with a German mock interview, and helped me recognise the value of my expertise beyond language barriers. Even after I secured a job, she continued to check in and support my progress. I highly recommend her to anyone restarting their career."
+    }
+  },
+  "LocaleSwitcher": {
+    "label": "Language",
+    "en": "English"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "body": "The page you're looking for doesn't exist.",
+    "home": "Back to home"
+  }
+}

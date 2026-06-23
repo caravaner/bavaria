@@ -1,0 +1,186 @@
+// Prisma schema for the Bavaria career-restart site.
+// All models live in the Postgres schema "main" (set via DATABASE_URL ?schema=main).
+//
+// This package is owned by the admin/API app only. The public web app never
+// imports it — it reads everything over HTTP from the admin app's API.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum OrderStatus {
+  CREATED    // Order row created, PayPal order created, awaiting approval
+  APPROVED   // User approved in PayPal popup (rare to see in DB — usually we go straight to CAPTURED)
+  CAPTURED   // Payment captured, booking is confirmed
+  FAILED     // Capture failed or verification mismatch
+  REFUNDED   // Refunded after capture
+}
+
+enum EmailStatus {
+  QUEUED     // Row created, not yet handed to the SMTP transport
+  SENT       // Accepted by the SMTP transport
+  FAILED     // Transport error — see `error`
+  SCHEDULED  // Reserved: a reminder queued to send at `scheduledFor`
+  CANCELLED  // Reserved: a scheduled send that was cancelled
+}
+
+/// One payment intent / booking. Created when the user clicks "Pay" on the booking page.
+model Order {
+  id             String      @id @default(cuid())
+  paypalOrderId  String?     @unique
+  serviceSlug    String
+  amountCents    Int
+  currency       String      @default("EUR")
+
+  // Guest info (no client accounts yet)
+  guestEmail     String
+  guestName      String
+
+  // 1:1 sessions only; null for the workshop / async services
+  scheduledFor   DateTime?
+
+  // Optional free-text from the booking form
+  notes          String?
+
+  status         OrderStatus @default(CREATED)
+  capturedAt     DateTime?
+  refundedAt     DateTime?
+
+  // Transactional emails (confirmation, reminders) tied to this booking.
+  emails         EmailMessage[]
+
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+
+  @@index([guestEmail])
+  @@index([status])
+  @@index([createdAt])
+}
+
+/// Audit log + monitor for every email the system sends. Owned by the admin app
+/// (the only place with DB access); the web app triggers sends over the internal
+/// API. Resend re-renders the template from `context`, so we keep the inputs, not
+/// just the rendered bytes.
+model EmailMessage {
+  id                String      @id @default(cuid())
+
+  /// Logical template name, e.g. ORDER_CONFIRMATION | REMINDER | REFUND_NOTICE.
+  template          String
+  toEmail           String
+  toName            String?
+  fromEmail         String
+  subject           String
+  locale            String      @default("en")
+
+  status            EmailStatus @default(QUEUED)
+
+  /// The variables the template was rendered from — enables faithful resends.
+  context           Json
+  /// Optional rendered-HTML snapshot, for the admin audit/detail view.
+  bodyHtml          String?
+  /// SMTP message-id returned by the transport, for tracing.
+  providerMessageId String?
+  error             String?
+
+  /// Idempotency guard for one-shot transactional sends (e.g. the capture vs.
+  /// webhook race on order confirmation). Resends and reminders leave this null.
+  dedupeKey         String?     @unique
+
+  /// The booking that triggered this email, when applicable.
+  orderId           String?
+  order             Order?      @relation(fields: [orderId], references: [id], onDelete: SetNull)
+
+  /// Reserved for future scheduled reminders (manual reminders send immediately).
+  scheduledFor      DateTime?
+  sentAt            DateTime?
+  attempts          Int         @default(0)
+
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+
+  @@index([status])
+  @@index([template])
+  @@index([orderId])
+  @@index([toEmail])
+  @@index([createdAt])
+}
+
+/// Idempotency log for PayPal webhooks.
+/// Primary key is PayPal's event id — duplicate events are silently rejected by the DB.
+model WebhookEvent {
+  id           String   @id              // PayPal event id
+  eventType    String
+  receivedAt   DateTime @default(now())
+  processedAt  DateTime?
+  status       String   @default("PENDING") // PENDING | PROCESSED | FAILED
+  payload      Json
+  error        String?
+
+  @@index([eventType])
+  @@index([receivedAt])
+}
+
+/// Admin dashboard account. There is no public sign-up — accounts are created
+/// by the seed script. Passwords are scrypt hashes (see apps/admin/lib/auth).
+model AdminUser {
+  id           String   @id @default(cuid())
+  username     String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+/// A bookable service. Replaces the old hard-coded array in lib/services.ts.
+/// Structured/pricing fields live here; translatable copy lives in ServiceTranslation.
+model Service {
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  /// When false the service 404s on the public site and is hidden from listings.
+  active          Boolean  @default(true)
+  /// Ascending display order in listings.
+  sortOrder       Int      @default(0)
+
+  /// Duration in minutes for live sessions. Null for async services.
+  durationMinutes Int?
+  /// Group capacity. Null for 1:1 or async services.
+  capacity        Int?
+  /// Delivery window in working days for async services (e.g. 3..5). Both null = none.
+  deliveryFrom    Int?
+  deliveryTo      Int?
+  /// Fixed-schedule events (workshops, cohorts). ISO dates "YYYY-MM-DD".
+  eventDates      String[]
+  /// Free-form start time for display, e.g. "20:30 CEST".
+  eventTime       String?
+
+  priceCents      Int
+  currency        String   @default("EUR")
+
+  translations    ServiceTranslation[]
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([active])
+}
+
+/// Per-locale copy for a Service. One row per (service, locale).
+model ServiceTranslation {
+  id          String   @id @default(cuid())
+  serviceId   String
+  service     Service  @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  locale      String
+
+  title       String
+  shortBlurb  String
+  /// Body paragraphs.
+  description String[]
+  outcomes    String[]
+  forWhom     String[]
+
+  @@unique([serviceId, locale])
+}
