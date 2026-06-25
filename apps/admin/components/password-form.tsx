@@ -45,7 +45,7 @@ export function PasswordForm() {
         <p className="text-sm text-[var(--color-danger)]">{state.error}</p>
       )}
       {state.success && (
-        <p className="text-sm text-green-700">Password updated.</p>
+        <p className="text-sm text-[var(--color-success)]">Password updated.</p>
       )}
 
       <button

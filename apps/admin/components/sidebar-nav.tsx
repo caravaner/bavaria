@@ -41,7 +41,7 @@ export function SidebarNav() {
             className={[
               "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium",
               active
-                ? "bg-[var(--color-accent-soft)] text-[var(--color-accent)]"
+                ? "bg-[var(--color-gold-soft)] text-[var(--color-foreground)]"
                 : "text-[var(--color-muted)] hover:bg-[var(--color-surface-2)] hover:text-[var(--color-foreground)]",
             ].join(" ")}
           >
