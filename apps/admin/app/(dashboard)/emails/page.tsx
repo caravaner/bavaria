@@ -89,7 +89,7 @@ export default async function EmailsPage({
           defaultValue={template ?? ""}
           className={selectClass}
         >
-          <option value="">All templates</option>
+          <option value="">All</option>
           {TEMPLATE_OPTIONS.map((t) => (
             <option key={t} value={t}>
               {templateLabel(t)}

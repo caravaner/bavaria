@@ -90,7 +90,6 @@ export function EmailLayout({
           <Hr style={hr} />
           <Section>
             <Text style={footer}>{footerText}</Text>
-            <Text style={footer}>{brand.url}</Text>
           </Section>
         </Container>
       </Body>

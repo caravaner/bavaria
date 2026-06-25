@@ -55,8 +55,22 @@ export async function sendAndLog(
   input: SendAndLogInput,
 ): Promise<SendAndLogResult> {
   const locale = input.locale ?? "en";
-  const from = emailEnv.from();
-  const replyTo = input.replyTo ?? emailEnv.replyTo();
+  // Resolve addresses defensively: a missing EMAIL_FROM is a config error, but
+  // it must never throw before the row is written — capturing the message (so it
+  // can be resent) matters more than this one send. An unconfigured from yields
+  // a FAILED row with the data intact rather than lost data + a 500.
+  let from: string;
+  try {
+    from = emailEnv.from();
+  } catch {
+    from = "unconfigured@localhost";
+  }
+  let replyTo: string;
+  try {
+    replyTo = input.replyTo ?? emailEnv.replyTo();
+  } catch {
+    replyTo = from;
+  }
 
   let row: EmailMessage;
   try {

@@ -47,8 +47,17 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "invalid_message" }, { status: 400 });
   }
 
-  const result = await sendContactNotification({ name, email, message });
-
-  // The row is logged either way; surface whether the live send succeeded.
-  return NextResponse.json({ ok: true, sent: result.ok });
+  // Mail delivery is best-effort and invisible to the web: sendContactNotification
+  // persists the message (in the EmailMessage row's context) before sending, so a
+  // failed send leaves a FAILED row the owner can resend. We always report ok so
+  // the visitor sees success — the data is captured regardless.
+  try {
+    const result = await sendContactNotification({ name, email, message });
+    return NextResponse.json({ ok: true, sent: result.ok });
+  } catch (err) {
+    // Even an unexpected throw must not bubble to the web. The captured data
+    // (if any) is in the EmailMessage table; log for the operator.
+    console.error("[contact] notification error", err);
+    return NextResponse.json({ ok: true, sent: false });
+  }
 }

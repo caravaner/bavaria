@@ -1,7 +1,35 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { saveService, type ServiceFormState } from "@/app/actions/services";
+
+/** The three mutually-exclusive ways a service is delivered. */
+type ServiceMode = "oneToOne" | "event" | "async";
+
+const MODES: { key: ServiceMode; label: string; hint: string }[] = [
+  {
+    key: "oneToOne",
+    label: "Live 1:1 session",
+    hint: "A scheduled one-on-one call of a fixed length. The guest picks a time when booking.",
+  },
+  {
+    key: "event",
+    label: "Scheduled event",
+    hint: "A workshop or cohort on fixed dates with a limited number of seats.",
+  },
+  {
+    key: "async",
+    label: "Async delivery",
+    hint: "A deliverable (e.g. a CV review) returned within a working-day window.",
+  },
+];
+
+/** Infer which mode an existing service belongs to from its populated fields. */
+function deriveMode(d: ServiceFormValues): ServiceMode {
+  if (d.eventDates.trim() || d.eventTime.trim()) return "event";
+  if (d.deliveryFrom.trim() || d.deliveryTo.trim()) return "async";
+  return "oneToOne";
+}
 
 export type ServiceFormValues = {
   id?: string;
@@ -78,6 +106,8 @@ function Area({
 
 export function ServiceForm({ defaults }: { defaults: ServiceFormValues }) {
   const [state, action, pending] = useActionState(saveService, initial);
+  const [mode, setMode] = useState<ServiceMode>(() => deriveMode(defaults));
+  const activeMode = MODES.find((m) => m.key === mode)!;
 
   return (
     <form action={action} className="space-y-8">
@@ -115,7 +145,7 @@ export function ServiceForm({ defaults }: { defaults: ServiceFormValues }) {
 
       <section className="space-y-4">
         <h2 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-muted)]">
-          Pricing &amp; format
+          Pricing
         </h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Text
@@ -129,47 +159,95 @@ export function ServiceForm({ defaults }: { defaults: ServiceFormValues }) {
             required
           />
           <Text label="Currency" name="currency" defaultValue={defaults.currency} />
-          <Text
-            label="Duration (minutes)"
-            name="durationMinutes"
-            type="number"
-            defaultValue={defaults.durationMinutes}
-            hint="live sessions only"
-          />
-          <Text
-            label="Capacity"
-            name="capacity"
-            type="number"
-            defaultValue={defaults.capacity}
-            hint="group services only"
-          />
-          <Text
-            label="Delivery from (days)"
-            name="deliveryFrom"
-            type="number"
-            defaultValue={defaults.deliveryFrom}
-            hint="async services"
-          />
-          <Text
-            label="Delivery to (days)"
-            name="deliveryTo"
-            type="number"
-            defaultValue={defaults.deliveryTo}
-          />
-          <Text
-            label="Event time"
-            name="eventTime"
-            defaultValue={defaults.eventTime}
-            hint='e.g. "20:30 CEST"'
-          />
         </div>
-        <Area
-          label="Event dates"
-          name="eventDates"
-          defaultValue={defaults.eventDates}
-          hint="one YYYY-MM-DD per line"
-          rows={2}
-        />
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-muted)]">
+          Format
+        </h2>
+
+        {/* Mode picker — only the chosen mode's fields are submitted, so the
+            others are cleared on save. */}
+        <div role="radiogroup" className="grid gap-2 sm:grid-cols-3">
+          {MODES.map((m) => {
+            const selected = m.key === mode;
+            return (
+              <button
+                key={m.key}
+                type="button"
+                role="radio"
+                aria-checked={selected}
+                onClick={() => setMode(m.key)}
+                className={[
+                  "rounded-lg border px-3 py-2 text-left text-sm font-medium",
+                  selected
+                    ? "border-[var(--color-accent)] bg-[var(--color-accent-soft)] text-[var(--color-accent)]"
+                    : "border-[var(--color-border)] text-[var(--color-muted)] hover:bg-[var(--color-surface-2)] hover:text-[var(--color-foreground)]",
+                ].join(" ")}
+              >
+                {m.label}
+              </button>
+            );
+          })}
+        </div>
+        <p className="text-xs text-[var(--color-muted)]">{activeMode.hint}</p>
+
+        {mode === "oneToOne" && (
+          <div className="grid gap-4 sm:grid-cols-2">
+            <Text
+              label="Duration (minutes)"
+              name="durationMinutes"
+              type="number"
+              defaultValue={defaults.durationMinutes}
+              hint="length of the session"
+            />
+          </div>
+        )}
+
+        {mode === "event" && (
+          <div className="space-y-4">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <Text
+                label="Event time"
+                name="eventTime"
+                defaultValue={defaults.eventTime}
+                hint='e.g. "20:30 CEST"'
+              />
+              <Text
+                label="Capacity"
+                name="capacity"
+                type="number"
+                defaultValue={defaults.capacity}
+                hint="max seats"
+              />
+            </div>
+            <Area
+              label="Event dates"
+              name="eventDates"
+              defaultValue={defaults.eventDates}
+              hint="one YYYY-MM-DD per line"
+              rows={3}
+            />
+          </div>
+        )}
+
+        {mode === "async" && (
+          <div className="grid gap-4 sm:grid-cols-2">
+            <Text
+              label="Delivery from (working days)"
+              name="deliveryFrom"
+              type="number"
+              defaultValue={defaults.deliveryFrom}
+            />
+            <Text
+              label="Delivery to (working days)"
+              name="deliveryTo"
+              type="number"
+              defaultValue={defaults.deliveryTo}
+            />
+          </div>
+        )}
       </section>
 
       <section className="space-y-4">
